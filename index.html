@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Budget App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- header -->
+    <div class="bg-gradient-to-r from-violet-400 to-violet-600">
+      <div class="bg-violet-700/30 py-2">
+        <div
+          class="mx-auto flex max-w-7xl items-center justify-between px-5 text-white"
+        >
+          <h2 class="flex items-center italic">
+            <img src="/public/logo.svg" height="40" width="40" />
+            <span>Budget App</span>
+          </h2>
+          <div class="flex items-center gap-4">
+            <h2>Naimul Haque</h2>
+            <a href="#" class="undeline text-sm text-white/50">Sign Out</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-sm px-5 py-8 text-center text-white">
+        <div>
+          <h2>Available Budget</h2>
+          <p id="total-budget" class="mt-1 text-4xl font-medium"></p>
+        </div>
+
+       
+
+        <div
+          class="mt-4 flex items-center justify-between bg-green-500 px-4 py-3 text-sm"
+        >
+          <p>Income</p>
+          <p>+ BDT <span id="total-income">3,391.45</span></p>
+        </div>
+
+        <div
+          class="mt-2 flex items-center justify-between bg-red-500 px-4 py-3 text-sm"
+        >
+          <span>Expenses</span>
+          <p>- BDT <span id="total-expense">1,762.69</span></p>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- add expense -->
+    <div class="border-b bg-gray-100 py-3">
+      <div class="mx-auto max-w-xl px-5">
+        <form class="flex gap-2">
+          <!-- entry type -->
+          <select
+            id="type"
+            name="type"
+            class="block w-20 shrink-0 rounded-md border-0 px-3 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            value="income"
+          >
+            <option value="income">+</option>
+            <option value="expense">-</option>
+          </select>
+
+          <!-- entry description -->
+          <input
+            id="description"
+            type="text"
+            name="description"
+            autocomplete="off"
+            class="block flex-1 rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Add description"
+          />
+
+          <!-- entry value -->
+          <input
+            type="number"
+            name="value"
+            id="value"
+            autocomplete="off"
+            class="block w-20 rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Value"
+          />
+
+          <!-- add button -->
+          <button
+            id="add-expense-button"
+            type="button"
+            class="flex w-9 shrink-0 basis-9 items-center justify-center rounded-md border border-indigo-200 bg-indigo-100 text-indigo-600 shadow-sm hover:bg-indigo-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- income expense list -->
+    <div
+      class="mx-auto my-8 grid max-w-4xl grid-cols-1 gap-8 px-5 text-sm md:grid-cols-2"
+    >
+      <div>
+        <h2 class="border-b pb-2 font-medium text-green-600">Income</h2>
+
+        <!-- <p class="py-2.5 text-gray-600">There are no expenses.</p> -->
+
+        <ul id="income-list" class="divide-y">
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>Website project</span>
+
+              <div>
+                <span class="text-green-600">+11,999.99</span>
+                <span 
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>Salary</span>
+              <div>
+                <span class="text-green-600">+35,000.00</span>
+                <span 
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>Mobile app project</span>
+              <div>
+                <span class="text-green-600">+10,000.00</span>
+                <span
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="border-b pb-2 font-medium text-red-600">Expense</h2>
+
+        <!-- <p class="py-2.5 text-gray-600">There are no expenses.</p> -->
+
+        <ul id="expense-list" class="divide-y">
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>Groceries 1</span>
+              <div>
+                <span class="text-red-600">-2,500.00</span>
+                <span
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>Electricity Bill</span>
+              <div>
+                <span class="text-red-600">-2,500.00</span>
+                <span
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>House rent</span>
+              <div>
+                <span class="text-red-600">-2,500.00</span>
+                <span
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>Phone bill</span>
+              <div>
+                <span class="text-red-600">-2,500.00</span>
+                <span
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="py-2.5">
+            <div class="group flex justify-between gap-2 text-sm">
+              <span>1 Week Travel</span>
+              <div>
+                <span class="text-red-600">-2,500.00</span>
+                <span
+                  class="ml-2 hidden cursor-pointer font-medium text-red-500 group-hover:inline-block"
+                >
+                  Delete
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
