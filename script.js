@@ -48,14 +48,18 @@ calculateExpense();
  * Task 2: Calculate the budget
  */
 
-function calculateBudget() {
-  const totalIncomeValue = parseFloat(totalIncome.innerHTML.replace(/,/g, ""));
-  const totalExpenseValue = parseFloat(totalExpense.innerHTML.replace(/,/g, ""));
-  const budget = totalIncomeValue - totalExpenseValue;
-  totalBudget.innerHTML = budget >= 0 ? `+ ${formatMoney(budget)}` : `- ${formatMoney(Math.abs(budget))}`;
-}
 
-calculateBudget();
+function calculateBudget() {
+  const totalIncome1 = parseFloat(totalIncome.innerHTML.replace(/,/g, ""));
+  const totalExpense1 = parseFloat(totalExpense.innerHTML.replace(/,/g, ""));
+  const budget = totalIncome1 - totalExpense1;
+  totalBudget.innerHTML = budget >= 0 ? `+ ${formatMoney(budget)}` : `- ${formatMoney(Math.abs(budget))}`;
+
+  // Alert when available budget is 0 or less than 0
+  if (budget <= 0) {
+    alert("Warning: There's no avaiable budget to expense.");
+  }
+}
 
 
 /**
@@ -129,6 +133,5 @@ function addEntry() {
 }
 
 addExpenseButton.addEventListener("click", addEntry);
-
 
 
